@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Calculo de Rateio'),
+          centerTitle: true,
           actions: [
             IconButton(
                 onPressed: () {
@@ -198,17 +199,16 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Wrap(
+                    spacing: 4,
+                    runSpacing: 4,
                     runAlignment: WrapAlignment.start,
                     crossAxisAlignment: WrapCrossAlignment.start,
                     alignment: WrapAlignment.start,
                     children: List.generate(
                       rateioProporcional.pesos.length,
-                      (index) => Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: SizedBox(
-                          width: 220,
-                          child: PesoTextField(index),
-                        ),
+                      (index) => SizedBox(
+                        width: 150,
+                        child: PesoTextField(index),
                       ),
                     ),
                   ),
