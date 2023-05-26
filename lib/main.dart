@@ -1,7 +1,8 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rateioapp/src/pages/home/homepage.dart';
+import 'package:rateioapp/src/screens/homepage.dart';
+import 'package:rateioapp/src/providers/rateio_proporcional.dart';
 
 import 'src/providers/rateio_provider.dart';
 
