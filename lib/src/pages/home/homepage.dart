@@ -31,19 +31,45 @@ class _HomePageState extends State<HomePage> {
                     context: context,
                     builder: (BuildContext ctx) {
                       return AlertDialog(
-                        title: Text('Como usar o cálculo de rateio', style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSizeTitle)),
+                        title: Text('Como usar o cálculo de rateio',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: fontSizeTitle)),
                         content: SingleChildScrollView(
                           child: SelectableText.rich(
                             TextSpan(
                               style: Theme.of(context).textTheme.bodyMedium,
                               children: <TextSpan>[
-                                TextSpan(text: 'O cálculo de rateio é usado para dividir uma quantidade total em partes iguais ou proporcionais. Aqui estão os passos para usar este aplicativo para fazer o cálculo:\n\n', style: TextStyle(fontSize: fontSizeBody)),
-                                TextSpan(text: 'Rateio Simples\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSizeSubTitle)),
-                                TextSpan(text: '1. Digite o valor total que deseja dividir.\n2. Digite o número de partes iguais.\n3. Clique em calcular.\n4. O resultado será o valor para cada parte.\n\n', style: TextStyle(fontSize: fontSizeBody)),
-                                TextSpan(text: 'Exemplo: Se você tem R\$100 para dividir entre 5 pessoas igualmente, você deve digitar "100" no Total e "5" nas Partes. O resultado será R\$20 para cada pessoa.\n\n', style: TextStyle(fontSize: fontSizeBody)),
-                                TextSpan(text: 'Rateio Proporcional\n', style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSizeSubTitle)),
-                                TextSpan(text: '1. Digite o valor total que deseja dividir.\n2. Para cada parte, digite o peso da parte.\n3. Clique em calcular.\n4. O resultado será o valor para cada parte de acordo com o peso da parte.\n\n', style: TextStyle(fontSize: fontSizeBody)),
-                                TextSpan(text: 'Exemplo: Se você tem R\$100 para dividir entre 3 pessoas, onde a primeira pessoa recebe 50% do total e as outras duas recebem 25% cada, você deve digitar "100" no Total, e "50", "25", "25" nas Partes. O resultado será R\$50 para a primeira pessoa e R\$25 para as outras duas.\n\n', style: TextStyle(fontSize: fontSizeBody)),
+                                TextSpan(
+                                    text:
+                                        'O cálculo de rateio é usado para dividir uma quantidade total em partes iguais ou proporcionais. Aqui estão os passos para usar este aplicativo para fazer o cálculo:\n\n',
+                                    style: TextStyle(fontSize: fontSizeBody)),
+                                TextSpan(
+                                    text: 'Rateio Simples\n',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: fontSizeSubTitle)),
+                                TextSpan(
+                                    text:
+                                        '1. Digite o valor total que deseja dividir.\n2. Digite o número de partes iguais.\n3. Clique em calcular.\n4. O resultado será o valor para cada parte.\n\n',
+                                    style: TextStyle(fontSize: fontSizeBody)),
+                                TextSpan(
+                                    text:
+                                        'Exemplo: Se você tem R\$100 para dividir entre 5 pessoas igualmente, você deve digitar "100" no Total e "5" nas Partes. O resultado será R\$20 para cada pessoa.\n\n',
+                                    style: TextStyle(fontSize: fontSizeBody)),
+                                TextSpan(
+                                    text: 'Rateio Proporcional\n',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: fontSizeSubTitle)),
+                                TextSpan(
+                                    text:
+                                        '1. Digite o valor total que deseja dividir.\n2. Para cada parte, digite o peso da parte.\n3. Clique em calcular.\n4. O resultado será o valor para cada parte de acordo com o peso da parte.\n\n',
+                                    style: TextStyle(fontSize: fontSizeBody)),
+                                TextSpan(
+                                    text:
+                                        'Exemplo: Se você tem R\$100 para dividir entre 3 pessoas, onde a primeira pessoa recebe 50% do total e as outras duas recebem 25% cada, você deve digitar "100" no Total, e "50", "25", "25" nas Partes. O resultado será R\$50 para a primeira pessoa e R\$25 para as outras duas.\n\n',
+                                    style: TextStyle(fontSize: fontSizeBody)),
                               ],
                             ),
                           ),
@@ -98,16 +124,20 @@ class _HomePageState extends State<HomePage> {
             children: [
               TextFormField(
                 controller: totalController,
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^\d+[,]{0,1}\d{0,2}')),
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^\d+[,]{0,1}\d{0,2}')),
                 ],
                 decoration: InputDecoration(
                   labelText: 'Total',
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.calculate),
                     onPressed: () {
-                      double total = double.tryParse(totalController.text.replaceAll(',', '.')) ?? 0;
+                      double total = double.tryParse(
+                              totalController.text.replaceAll(',', '.')) ??
+                          0;
                       rateioProporcional.updateTotal(total);
                       rateioProporcional.rateioProporcional(context);
                     },
@@ -123,7 +153,9 @@ class _HomePageState extends State<HomePage> {
                   }
                 },
                 onFieldSubmitted: (value) {
-                  double total = double.tryParse(totalController.text.replaceAll(',', '.')) ?? 0;
+                  double total = double.tryParse(
+                          totalController.text.replaceAll(',', '.')) ??
+                      0;
                   rateioProporcional.updateTotal(total);
                   rateioProporcional.rateioProporcional(context);
                 },
@@ -148,9 +180,9 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                   ElevatedButton(
-                    child: Row(
+                    child: const Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
+                      children: [
                         Text('Calcular'),
                         SizedBox(width: 5, height: 5),
                         Icon(Icons.calculate),
@@ -187,7 +219,8 @@ class _HomePageState extends State<HomePage> {
                 visible: rateioProporcional.chartVisibility(),
                 child: SizedBox(
                   height: 180,
-                  child: ResultadoGrafico(resultados: rateioProporcional.resultados),
+                  child: ResultadoGrafico(
+                      resultados: rateioProporcional.resultados),
                 ),
               ),
             ],
@@ -205,14 +238,17 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               TextFormField(
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^\d+[,]{0,1}\d{0,2}')),
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^\d+[,]{0,1}\d{0,2}')),
                 ],
                 decoration: const InputDecoration(labelText: 'Total'),
                 onChanged: (value) {
                   try {
-                    rateio.updateTotal(double.parse(value.replaceAll(',', '.')), runUpdate: false);
+                    rateio.updateTotal(double.parse(value.replaceAll(',', '.')),
+                        runUpdate: false);
                   } catch (e) {
                     debugPrint(e.toString());
                   }
@@ -231,9 +267,11 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 10),
               TextFormField(
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^\d+[,]{0,1}\d{0,2}')),
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^\d+[,]{0,1}\d{0,2}')),
                 ],
                 onChanged: (value) {
                   try {
@@ -281,7 +319,8 @@ class PesoTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var rateioNotifier = Provider.of<RateioProporcional>(context, listen: false);
+    var rateioNotifier =
+        Provider.of<RateioProporcional>(context, listen: false);
     var peso = rateioNotifier.pesos[index];
 
     return Card(
@@ -307,9 +346,11 @@ class PesoTextField extends StatelessWidget {
                 rateioNotifier.updatePeso(index, value);
               },
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'^\d+[,]{0,1}\d{0,2}')),
+                FilteringTextInputFormatter.allow(
+                    RegExp(r'^\d+[,]{0,1}\d{0,2}')),
               ],
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               validator: (value) {
                 if (double.tryParse(value!.replaceAll(',', '.')) != null) {
                   return null;
