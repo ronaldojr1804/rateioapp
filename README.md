@@ -10,6 +10,9 @@ Rateio Simples: Divide um valor total em partes iguais. É ideal para situaçõe
 
 Rateio Proporcional: Divide um valor total proporcionalmente com base em pesos atribuídos a cada parte. Esta opção é adequada para situações em que as partes devem receber quantias diferentes de acordo com um peso ou porcentagem específica.
 
+## DEMO
+    https://rateio.nxs.dev.br
+
 ## Funcionalidades
 - Interface de usuário intuitiva e fácil de usar.
 - Suporte para cálculos de rateio simples e proporcional.
