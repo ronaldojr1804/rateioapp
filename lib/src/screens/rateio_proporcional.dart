@@ -10,8 +10,7 @@ class RateioProporcionalScreen extends StatefulWidget {
   const RateioProporcionalScreen({super.key});
 
   @override
-  State<RateioProporcionalScreen> createState() =>
-      _RateioProporcionalScreenState();
+  State<RateioProporcionalScreen> createState() => _RateioProporcionalScreenState();
 }
 
 class _RateioProporcionalScreenState extends State<RateioProporcionalScreen> {
@@ -27,8 +26,7 @@ class _RateioProporcionalScreenState extends State<RateioProporcionalScreen> {
             children: [
               TextFormField(
                 controller: totalController,
-                keyboardType:
-                    const TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(
                     RegExp(r'^\d+[,]{0,1}\d{0,2}'),
@@ -39,9 +37,7 @@ class _RateioProporcionalScreenState extends State<RateioProporcionalScreen> {
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.calculate),
                     onPressed: () {
-                      double total = double.tryParse(
-                              totalController.text.replaceAll(',', '.')) ??
-                          0;
+                      double total = double.tryParse(totalController.text.replaceAll(',', '.')) ?? 0;
                       rateioProporcional.updateTotal(total);
                       rateioProporcional.rateioProporcional(context);
                     },
@@ -85,9 +81,9 @@ class _RateioProporcionalScreenState extends State<RateioProporcionalScreen> {
                     },
                   ),
                   ElevatedButton(
-                    child: const Row(
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [
+                      children: const [
                         Text('Calcular'),
                         SizedBox(width: 5, height: 5),
                         Icon(Icons.calculate),
